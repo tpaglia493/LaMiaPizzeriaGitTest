@@ -11,7 +11,7 @@ namespace LaMiaPizzeria.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PizzaDbGitTest;Integrated Security=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PizzaDbGitTest-git;Integrated Security=True;TrustServerCertificate=True");
         }
     }
 }
