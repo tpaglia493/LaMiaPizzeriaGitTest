@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LaMiaPizzeria.DataBase;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LaMiaPizzeria.Controllers
 {
@@ -12,6 +13,24 @@ namespace LaMiaPizzeria.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Drink newDrink)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", newDrink);
+            }
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                db.Drinks.Add(newDrink);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
         }
     }
 }
