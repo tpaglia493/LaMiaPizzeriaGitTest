@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bg-elegant {
+    background-color: #790000;
+}
+
+.bg-contrast {
+    background-color: #FFF3DD;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.text-contrast {
+    color: #FFF3DD;
+}
+
+.bg-whitey {
+    background-color: #FFF9F4;
+}

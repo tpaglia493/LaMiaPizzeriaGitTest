@@ -1,0 +1,72 @@
+﻿@model List<PizzaModel>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h3>Lista degli articoli</h3>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-12">
+
+            <table class="table table-striped table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Immagine</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (PizzaModel pizza in Model)
+                    {
+                      
+                        <tr>
+                            <th scope="row">@pizza.Id</th>
+                            <td><img class="img-fluid img_square" width="100" height="100" src="@pizza.ImgSource" alt="Immagine @pizza.Name"></td>
+                            <td>@pizza.Name</td>
+                            <td>@pizza.Description</td>
+                            <td>@pizza.Price.ToString("n2") €</td>
+                            <td>
+                                <a class="btn btn-sm" href="@Url.Action("UpdatePizza", "Menu", new { id = pizza.Id })">
+                                    <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24"  classe="no-decorations" alt="" /> 
+                                </a>
+                             <form asp-controller="Menu" asp-action="DeletePizza" asp-route-id="@pizza.Id" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                        <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
+                                </button>
+                            </form>
+                                <a class="btn btn-sm" href="@Url.Action("Read", "Menu", new { id = pizza.Id })">
+                                    <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" classe="no-decorations" alt="" />
+                                </a>
+                            </td>
+                        </tr>
+                      
+                    }
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a href="@Url.Action("AddNewPizza", "Menu")">
+                            <img src="https://cdn.onlinewebfonts.com/svg/img_105471.png" width="100" height="100"  alt="Add new pizza button" />
+                            </a>
+                        </td>
+                        <td class="align-middle"> Aggiungi una Pizza</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a class="btn btn-sm" href="" style="pointer-events: none;">
+                                <img src="https://cdn.onlinewebfonts.com/svg/img_359924.png" width="24" height="24" alt="" />
+                            </a>
+                        </td></td>
+                        </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+<div class="row">
